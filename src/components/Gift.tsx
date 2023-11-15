@@ -7,9 +7,9 @@ type InputElement = {
     ref: MutableRefObject<HTMLInputElement> | MutableRefObject<null>
 }
 type Props = {
-    isCorrect: boolean, 
-    onCheck: (b: boolean) => void, 
-    unMountCb: ()=> void,
+    isCorrect: boolean,
+    onCheck: (b: boolean) => void,
+    unMountCb: () => void,
     onShowResult: (r: boolean) => void
 }
 
@@ -53,6 +53,7 @@ const Gift = ({ isCorrect, onCheck, onShowResult, unMountCb }: Props) => {
 
     const [inputs, setInputs] = useState(inputsValue);
     const [hasError, setHasError] = useState(false);
+    const [isLoadingImg, setIsLoadingImg] = useState(true);
 
     const onInputChange = (id: number, value: string) => {
         const list = inputs.map((e => {
@@ -86,6 +87,11 @@ const Gift = ({ isCorrect, onCheck, onShowResult, unMountCb }: Props) => {
         }
     }
     useEffect(() => {
+        const img = new Image();
+        img.src = bg;
+        img.onload = () => {
+            setIsLoadingImg(false);
+        }
         return () => unMountCb();
     }, []);
 
@@ -107,7 +113,7 @@ const Gift = ({ isCorrect, onCheck, onShowResult, unMountCb }: Props) => {
                 }
             </div>
             {isCorrect && <div className="gift-container relative">
-                <div onClick={toggleOpen}  className={'gift cursor-pointer ' + (!isChecked ? 'animate-bounce' : '')}>
+                <div onClick={toggleOpen} className={'gift cursor-pointer ' + (!isChecked ? 'animate-bounce' : '')}>
                     <input onChange={toggleOpen} checked={isChecked} type="checkbox" className="hidden" name="" id="gift-input" />
                     <div className="gift-input-label z-10 absolute -top-[40px] -left-[10px] origin-bottom-left duration-300 cursor-pointer"></div>
                     <button onClick={showResult} className="gift-content cursor-pointer">
@@ -124,6 +130,11 @@ const Gift = ({ isCorrect, onCheck, onShowResult, unMountCb }: Props) => {
                         </div>
                     </button>
                 </div>
+            </div>}
+            {isLoadingImg && <div className='fixed top-0 left-0 w-screen h-screen bg-black z-[9999999] flex justify-center items-center'>
+                <p className="text-white animate-bounce text-3xl tracking-widest">
+                    Please wait ...
+                </p>
             </div>}
         </section>
     );
