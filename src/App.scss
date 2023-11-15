@@ -1,0 +1,258 @@
+@import url('https://fonts.cdnfonts.com/css/love-future');
+@import url('https://fonts.cdnfonts.com/css/marlina');
+
+// $neon-color: #00b3ff;
+$neon-color: rgb(238, 94, 94);
+
+$bubble-color: #4fc3dc;
+
+body {
+  margin: 0;
+  padding: 0;
+  /* background: rgb(54, 13, 13); */
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-dark {
+	background: rgb(74,73,93);
+background: radial-gradient(circle, rgba(74,73,93,1) 0%, rgba(27,27,62,1) 38%, rgba(7,37,43,1) 100%);
+background: rgb(107,50,50);
+background: radial-gradient(circle, rgba(107,50,50,1) 0%, rgba(38,13,13,1) 38%, rgba(0,0,0,1) 100%);
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+button {
+  outline: 0;
+  cursor: pointer;
+}
+button:active, button:focus {
+  outline: 0;
+}
+.box {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 140px;
+  transform: translate(-50%);
+  cursor: pointer;
+  outline: none;
+}
+
+.box img {
+  margin: 5px;
+  height: 160px;
+  width: 220px;
+  display: block;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: 0;
+}
+
+.kuku {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0;
+  z-index: -1;
+}
+
+.lid {
+  position: absolute;
+  left: 50%;
+  width: 238px;
+  transform: translate(-50%);
+  bottom: 270px;
+}
+
+.jump {
+  z-index: 1;
+  animation: 1s jump infinite alternate;
+}
+
+.move {
+  animation: 1s wiggle infinite linear;
+}
+
+.rotating {
+  animation: 1s rotating;
+}
+
+.rotated {
+  transform: rotate(145deg) translate(-70%, -10px);
+}
+
+@keyframes wiggle {
+  10%,
+  90% {
+    transform: translate(-50%) translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate(-50%) translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate(-50%) translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate(-50%) translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg) translate(-50%, 0);
+  }
+
+  100% {
+    transform: rotate(145deg) translate(-70%, 0px);
+  }
+}
+
+@keyframes jump {
+  from {
+    bottom: 210px;
+    z-index: 0;
+  }
+  to {
+    bottom: 450px;
+  }
+}
+
+span.heart-icon {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  animation: fadeInOut 1s linear infinite;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+}
+span.heart-icon::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('./assets/heart.png');
+  background-size: cover;
+  animation: moveShape 1s linear infinite;
+}
+@keyframes moveShape {
+  0% {
+    transform: translate(0) rotate(0deg);
+  }
+  100% {
+    transform: translate(300px) rotate(360deg);
+  }
+}
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+}
+
+.neon-text {
+  display: flex;
+  color: transparent;
+  font-family:'Love Future', sans-serif;
+  span {
+    animation: neon 3s infinite;
+	color: pink;
+	text-shadow: 0 0 10px $neon-color,
+	0 0 20px $neon-color,
+	0 0 40px $neon-color,
+	0 0 80px $neon-color,
+  }
+}
+
+@keyframes neon {
+  0% {
+    color: pink;
+    filter: blur(2px) hue-rotate(0deg);
+    text-shadow: 0 0 10px $neon-color,
+		0 0 20px $neon-color,
+		0 0 40px $neon-color,
+		0 0 80px $neon-color,
+		0 0 120px $neon-color,
+		0 0 300px $neon-color,
+  	}
+	30%, 70% {
+		color: pink;
+		filter: blur(2px) hue-rotate(360deg);
+		text-shadow: 0 0 10px $neon-color,
+			0 0 20px $neon-color,
+			0 0 40px $neon-color,
+			0 0 80px $neon-color,
+			0 0 120px $neon-color,
+			0 0 300px $neon-color,
+	}
+	100% {
+		color: pink;
+		box-shadow: none;
+		filter: blur(2px) hue-rotate(0deg);
+	}
+}
+
+.bubbles {
+	position: relative;
+	display: flex;
+	span {
+		position: relative;
+		margin: 0 4px;
+		animation: bubbles 15s linear infinite;
+		img {
+			object-fit: cover;
+		}
+	}
+
+}
+@keyframes bubbles {
+	0% {
+		transform: translateY(100vh) scale(0.5);
+	}
+	100% {
+		transform: translateY(-100vh) scale(1);
+	}
+}
+@keyframes heart {
+	0% {
+		transform: scale(1.07);
+	}
+	80% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.8);
+	}
+}
+.big-heart {
+	 margin-top: 50px;
+	 animation: heart 0.6s linear infinite;
+	 img {
+		width: 100%;
+		height: 140px;
+		object-fit: cover;
+	 }
+}
+@keyframes appear {
+	from {
+		opacity: 0;
+	} to {
+		opacity: 1;
+	}
+}
+.appear {
+	animation: appear 2s;
+}
