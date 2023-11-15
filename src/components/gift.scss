@@ -91,22 +91,32 @@ $gift-box-primary: rgb(165, 254, 56);
 }
 
 @media screen and (max-width: 764px) {
-    // .gift-container {
-    //     width: 150px;
-    // }
-    // .gift-input-label {
-    //     &::before {
-    //         left: 72px;
-    //     }
-    //     &::after {
-    //         left: 67px;
-    //     }
-    // }
-    // .gift {
-    //     &::before {
-    //         left: 62px;
-    //     }
-    // }
+    .gift-container {
+        width: 150px;
+        &::before {
+            top: -130px;
+        }
+    }
+    .gift-input-label {
+        &::before {
+            left: 72px;
+        }
+        &::after {
+            left: 67px;
+        }
+    }
+    .gift {
+        top: -240px;
+        &::before {
+            left: 62px;
+        }
+    }
+    #gift-input:checked ~ .gift-content {
+        transform: translateY(-320px) scale(1);
+    }
+    .gift-content {
+        left: -60px;
+    }
 }
 .app-input {
     height: 100%;
@@ -288,9 +298,10 @@ input[type=number]::-webkit-outer-spin-button {
     position: absolute;
     top: 150px;
     color: white;
-    font-family: brush script mt;
+    // font-family: brush script mt;
+    font-family: 'Love Future', sans-serif;
     text-align: center;
     width: 100%;
-    font-size:30px;
+    font-size:20px;
   }
   

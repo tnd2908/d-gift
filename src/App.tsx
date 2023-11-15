@@ -61,7 +61,7 @@ function App() {
 		<>
 			{!isShowResult
 				? <Gift isCorrect={isCorrect} onCheck={onCheck} unMountCb={onRemoveEvent} onShowResult={onShowResult}/>
-				: <section className='bg-dark h-screen w-full flex flex-col px-4 justify-center items-center appear'>
+				: <section className='bg-dark h-screen w-full flex flex-col px-6 justify-center items-center appear'>
 					<h2 className='neon-text text-center items-center relative lg:text-[120px] text-[60px]'>
 						{text.map((t, index) => (
 							(t !== ' ') ? <span key={'text-' + index} className={' block neon-text-' + (index + 1)}>{t}</span>

@@ -126,7 +126,7 @@ const Gift = ({ isCorrect, onCheck, onShowResult, unMountCb }: Props) => {
                                 SAY
                             </div>
                             <div className="front" />
-                            <div className="text2">- Click on the heart - </div>
+                            <div className="text2">~ Click on the heart ~ </div>
                         </div>
                     </button>
                 </div>
