@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import './App.scss';
 import heart from './assets/heart3d.png';
-import heartImg from './assets/big-heart.png';
 
-import Gift from './components/Gift'
 import Bubbles from './components/Bubbles/Bubbles';
+import Gift from './components/Gift';
 
 function App() {
 
